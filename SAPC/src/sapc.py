@@ -12,27 +12,28 @@ class SAPC():
         self.cups = 0
         self.shop = Shop()
         
-    def buy(self):
+    def buy(self, stdscr):
         while True:
-            key = self.scr.getch()
-            if key == BUY:
+            key = stdscr.getch()
+            if key == ord('b'):
                 break
-            elif key >= 49 and key <= 53:
-                if self.shop.offer[key - 48] is None:
+            elif key >= ord('1') and key <= ord('5'):
+                if self.shop.offer[key - 49] is None:
                     break
                 else:
+                    pet = self.shop.offer[key - 49]
                     while True:
-                        key = self.scr.getch()
-                        if key == BUY:
+                        key = stdscr.getch()
+                        if key == ord('b'):
                             break
-                        elif key >= 49 and key <= 53:
-                            pill = key - 48
-                            if self.board[pill] == None:
-                                self.board[pill] = self.shop.offer[pill]
+                        elif key >= ord('1') and key <= ord('5'):
+                            pnum = key - 49
+                            if self.board[pnum] == None:
+                                self.board[pnum] = pet
                                 self.gold -= 3
-                                waiting = False
-                            elif type(self.board[pill]) == type(self.shop.offer[pill]):
-                                self.board[key - 48].level += 1
+                                break
+                            elif type(self.board[pnum]) == type(pet):
+                                #self.board[pnum].level += 1
                                 self.gold -= 3
                         break
             break
