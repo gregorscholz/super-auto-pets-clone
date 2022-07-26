@@ -7,7 +7,7 @@ class SAPC():
         self.state = 'chill'
         self.board = [None, None, None, None, None]
         self.round = 0
-        self.gold = 0
+        self.gold = 10
         self.lives = 10
         self.cups = 0
         self.shop = Shop()
@@ -18,10 +18,10 @@ class SAPC():
             if key == ord('b'):
                 break
             elif key >= ord('1') and key <= ord('5'):
-                if self.shop.offer[key - 49] is None:
+                if self.shop.board[key - 49] is None:
                     break
                 else:
-                    pet = self.shop.offer[key - 49]
+                    pet = self.shop.board[key - 49]
                     while True:
                         key = stdscr.getch()
                         if key == ord('b'):

@@ -1,7 +1,8 @@
 import curses
 
 from src.sapc import SAPC
-from src.utils import draw_border
+from src.utils import (draw_border, draw_cups, draw_gold, draw_lives,
+                       draw_own_board, draw_shop_board)
 
 
 def start_game(stdscr):
@@ -11,6 +12,11 @@ def start_game(stdscr):
         draw_border(stdscr)
         
         if game.state == 'chill':
+            draw_lives(stdscr, game.lives)
+            draw_cups(stdscr, game.cups)
+            draw_gold(stdscr, game.gold)
+            draw_own_board(stdscr, game.board)
+            draw_shop_board(stdscr, game.shop.board)
             key = stdscr.getch()
             # resize event
             if key == curses.KEY_RESIZE:
