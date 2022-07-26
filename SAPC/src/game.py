@@ -23,7 +23,7 @@ def start_game(stdscr):
                 game.state = 'battle'
             # b, buy
             elif key == ord('b'):
-                game.buy()
+                game.buy(stdscr)
             # r, roll
             elif key == ord('r'):
                 game.reroll()
